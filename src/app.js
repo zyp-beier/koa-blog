@@ -2,6 +2,7 @@ const Koa = require('koa');
 const Route = require('@koa/router');
 const serve = require('koa-static');
 const njs = require('koa-nunjucks-2');
+const bodyParser = require('koa-bodyparser')
 const app = new Koa();
 const route = new Route();
 
@@ -19,12 +20,27 @@ app.use(njs({
         trimBlock: true
     }
 }));
+app.use(bodyParser())
+
+route.get('/login.html', async ctx => {
+    await  ctx.render('login/login')
+});
+
+route.post('/login', async ctx => {
+    const {userName,psd} = userInfo
+    const {username,password} = ctx.request.body;
+    let state = false
+    console.log(userName,psd)
+    console.log(username,password)
+    if(username === userName && password === psd) {
+        console.log(userName,psd)
+        state = true
+    }
+    console.log(state)
+    await ctx.render('requestResult/requestResult',{state})
+});
 
 route.get('/', async ctx => {
-    await  ctx.render('login/login')
-})
-
-route.get('/index', async ctx => {
     await ctx.render('index',{
         userInfo,
         year:new Date().getFullYear()

@@ -1,5 +1,6 @@
 module.exports = {
-  userName: '赵银萍',
+  userName: '123',
+  psd: '123',
   city: '杭州',
   job: 'fontEnd',
   avatar: 'http://pic1.win4000.com/pic/f/24/7ede4c9413.jpg',
