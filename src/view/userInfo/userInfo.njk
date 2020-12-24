@@ -1,0 +1,24 @@
+<div class='info-wrap'>
+  <div class='info-title'>个人信息</div>
+  <div style="padding:0 20px">
+    <div class='info-content'>
+      <div class='info-avatar'>
+        <img src={{userInfo.avatar}} />
+      </div>
+      <div class='info-right'>
+        <div class="info-username">
+          {{userInfo.userName}}
+        </div>
+        <div class="info-city">
+          {{userInfo.city}}-{{userInfo.job}}
+        </div>
+      </div>
+    </div>
+    <div class="blog-number">
+      <div class="blog-data"><div>文章数量</div><div class="blog-data-number">{{userInfo.articleNumber}}</div></div>
+      <div class="blog-data"> <div>分类数量</div><div class="blog-data-number">{{userInfo.classification}}</div></div>
+      <div class="blog-data"> <div>标签数量</div> <div class="blog-data-number">{{userInfo.tag}}</div></div>
+    </div>
+    <div style="font-size: 14px;color:#7F7F7F;text-align: center">You know nothing.</div>
+  </div>
+</div>

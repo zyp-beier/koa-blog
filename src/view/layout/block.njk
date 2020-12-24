@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/userInfo.css">
+  <link rel="stylesheet" href="/footer.css">
+</head>
+<body>
+<div class='header-wrap'>
+  <div class="header">
+    <div class="header-left">
+      <div class="user-blog">{{userInfo.userName}} Blog</div>
+      <div class="header-item">
+        <a href="/index" >首页</a>
+      </div>
+      <div class="header-item">
+        <a href="/list">归档</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <input type="search"
+             aria-label="请输入关键字"
+             required autocomplete="off"
+             data-toggle="tooltip"
+             data-placement="bottom"
+             title="输入查询关键字"
+             placeholder="请输入关键字" />
+      <div class="search">查询</div>
+    </div>
+  </div>
+</div>
+  {% block body %}
+  defaule body
+  {% endblock %}
+<div class="footer-wrap">
+  <div class="footer">
+    <div style="padding-bottom: 10px">
+      ♥ thanks for zhaoyinping
+    </div>
+    <div>
+      Copyright © {{year}} zyp.保留所有权利 联系我们 1528466340@qq.com
+    </div>
+  </div>
+</div>
+</body>
+</html>

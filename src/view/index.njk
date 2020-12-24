@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
-</head>
-<body>
-    <div>
-        {{name}}
-        {{time}}
+{% extends "layout/block.njk" %}
+
+{% block body %}
+<section>
+    <div class='main'>
+        <div class='card'>
+            <div class="blog-wrap">
+                {% for item in userInfo.indexData %}
+                <div class="blog-list">
+                    <div class="blog-title"><a class="" href="/item/{{item.id}}">{{ item.title }}</a></div>
+                    <div class="blog-content">{{item.content}}</div>
+                    <div class="blog-info">
+                        <div class="blog-info-item">{{item.tag}}</div>
+                        <div class="blog-info-item">{{item.createTime}}</div>
+                        <div class="blog-info-item">{{item.pageViews}}次浏览</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% include "userInfo/userInfo.njk" %}
     </div>
-</body>
-</html>
+</section>
+{% endblock %}

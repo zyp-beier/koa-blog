@@ -1,0 +1,45 @@
+html,body{
+    padding: 0;
+    margin: 0;
+}
+.login-bg{
+    width: 100%;
+    height: 100vh;
+    background:url('http://static.zuidaima.com/images/259620/201806/20180611102732764_w.png') center;
+    background-size: 100%;
+    position: relative;
+}
+.login-wrap{
+    position: absolute;
+    top:100px;
+    left: 0;
+    right: 0;
+    margin:  auto;
+    width: 400px;
+    height: 300px;
+    background-color: rgba(255,255,255,0.5);
+    padding:20px;
+}
+.welcome{
+    text-align: center;
+}
+.login-info{
+    text-align: center;
+    margin-top: 40px;
+}
+.login-info input{
+    outline-style: none;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.login-info-username{
+    margin-bottom: 20px;
+}
+.login-info-username label{
+
+}
+.login-in{
+    margin-top: 20px;
+}
