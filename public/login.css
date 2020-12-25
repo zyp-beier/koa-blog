@@ -5,18 +5,20 @@ html,body{
 .login-bg{
     width: 100%;
     height: 100vh;
-    background:url('http://static.zuidaima.com/images/259620/201806/20180611102732764_w.png') center;
+    background:url('https://up.keaitupian.com/pic_source/7c/04/e0/7c04e0e2dc3f7dd476e699a80064d75a.jpg') center;
+    /*background:url('https://uploadfile.bizhizu.cn/up/49/59/a3/4959a384e011492355dbee6ed72d277a.jpg') center;*/
     background-size: 100%;
     position: relative;
 }
 .login-wrap{
     position: absolute;
-    top:100px;
+    top:0;
+    bottom: 0;
     left: 0;
     right: 0;
     margin:  auto;
-    width: 400px;
-    height: 300px;
+    width: 350px;
+    height: 330px;
     background-color: rgba(255,255,255,0.5);
     padding:20px;
 }
@@ -27,19 +29,30 @@ html,body{
     text-align: center;
     margin-top: 40px;
 }
-.login-info input{
+.login-info-input{
+    margin-bottom: 20px;
+}
+.login-info-input label{
+    width: 60px;
+    display: inline-block;
+    text-align: justify;
+    text-align-last: justify;
+}
+.login-info-input input{
     outline-style: none;
     font-size: 16px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.login-info-username{
-    margin-bottom: 20px;
-}
-.login-info-username label{
-
-}
 .login-in{
-    margin-top: 20px;
+    margin-top: 30px;
+    width:200px;
+    outline-style: none;
+    border: 0;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: dodgerblue;
 }

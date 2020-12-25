@@ -10,26 +10,26 @@
 <body>
 <div class="login-bg">
  <div class="login-wrap">
-   <h2 class="welcome">
+   <h1 class="welcome">
      欢迎登录
-   </h2>
-   <div class="login-info">
-     <form action="/login" method="post">
-       <div class="login-info-username a">
-         <label for="username">
-           用户名:
-           <input type="text" name="username" placeholder="请输入用户名" id="username">
-         </label>
-       </div>
-       <div class="login-info-password a">
-         <label for="password">
-           密码:
-           <input type="password" name="password" placeholder="请输入密码" id="password">
-         </label>
-       </div>
-       <div class="login-in"><input type="submit" value="登录"></div>
-     </form>
-   </div>
+   </h1>
+   <form action="/login" method="post" class="login-info">
+     <div class="login-info-input">
+       <label for="username" >
+         用户名
+       </label>
+       :
+       <input type="text" name="username" placeholder="请输入用户名" id="username">
+     </div>
+     <div class="login-info-input">
+       <label for="password" >
+         密码
+       </label>
+       :
+       <input type="password" name="password" placeholder="请输入密码" id="password">
+     </div>
+     <input type="submit" value="登录" class="login-in">
+   </form>
  </div>
 </div>
 </body>
