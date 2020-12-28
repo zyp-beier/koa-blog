@@ -54,10 +54,9 @@ route.get('/list', async ctx => {
     })
 });
 
-route.get('/item/:id', async ctx => {
-    const {id = ''} = ctx.params
+route.get('/item', async ctx => {
+    const {id = ''} = ctx.query
     const item = list.find(item => Number(id) === Number(item.id))
-    console.log(item);
     if(!item){
         ctx.status = 404;
         return
@@ -67,6 +66,40 @@ route.get('/item/:id', async ctx => {
         item
     })
 });
+
+route.get('/admin',async ctx => {
+    await ctx.render('admin/index')
+})
+
+route.get('/admin/posts', async ctx => {
+    await ctx.render('admin/posts',{
+        list
+    })
+})
+route.get('/admin/admin', async ctx => {
+    await ctx.render('admin/admin')
+});
+
+route.get('/admin/posts/remove',async ctx => {
+    const {id} = ctx.query;
+     let index = list.findIndex((item) => {
+         return String(item.id) === String(id)
+     });
+   list.splice(index,1)
+    return ctx.redirect('/admin/posts/remove')
+});
+
+route.post('/admin/posts/create', async ctx => {
+    let {title,content} = ctx.request.body;
+    console.log(title,content)
+    let id = list[list.length - 1].id;
+    list.push({
+        id: id++,
+        title,
+        content,
+    })
+    return ctx.redirect('/admin/posts')
+})
 
 app.use(route.routes());
 app.use(route.allowedMethods());

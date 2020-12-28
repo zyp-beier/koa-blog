@@ -11,8 +11,10 @@
   <link rel="stylesheet" href="/list.css">
   <link rel="stylesheet" href="/tag.css">
   <script src="/tag.js"></script>
+  {% block styles %}{% endblock %}
 </head>
 <body>
+{% block header%}
 <div class='header-wrap'>
   <div class="header">
     <div class="header-left">
@@ -39,9 +41,13 @@
     </div>
   </div>
 </div>
+{% endblock %}
+<div>
   {% block body %}
   defaule body
   {% endblock %}
+</div>
+{% block footer %}
 <div class="footer-wrap">
   <div class="footer">
     <div style="padding-bottom: 10px">
@@ -52,5 +58,6 @@
     </div>
   </div>
 </div>
+{% endblock %}
 </body>
 </html>

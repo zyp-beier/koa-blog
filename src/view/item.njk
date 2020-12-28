@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
-</head>
-<body>
+{% extends "layout/block.njk" %}
+{% block body %}
     <div>
-    <div></div>
-    <div>
-        <div>个人信息</div>
-        <div>
-            
-        </div>
-        <div></div>
+        <h1>
+            {{item.title}}
+        </h1>
+        <p>
+            {{item.content}}
+        </p>
     </div>
-        {{userInfo.userName}}
-        {{userInfo.city}}
-        {{userInfo.job}}
-        <img src={{userInfo.avatar}} />
-        {{userInfo.articleNumber}}
-        {{userInfo.classification}}
-        {{userInfo.tag}}
-    </div>
-</body>
-</html>
+{% endblock %}
