@@ -11,6 +11,7 @@ const config = require('../cofig/cofig');
 
 const list = require('./stor/list');
 const userInfo = require('./stor/blog');
+const tagList = require('./stor/tag')
 
 
 app.use(njs({
@@ -29,26 +30,26 @@ route.get('/login.html', async ctx => {
 route.post('/login', async ctx => {
     const {userName,psd} = userInfo
     const {username,password} = ctx.request.body;
-    let state = false
-    console.log(userName,psd)
-    console.log(username,password)
+    let state = 0
     if(username === userName && password === psd) {
-        console.log(userName,psd)
-        state = true
+        state = 1
+    }else if((username && username === userName) && password !== psd) {
+        state = -1
     }
-    console.log(state)
     await ctx.render('requestResult/requestResult',{state})
 });
 
 route.get('/', async ctx => {
     await ctx.render('index',{
         userInfo,
-        year:new Date().getFullYear()
+        year:new Date().getFullYear(),
+        tagList
     })
 });
 
 route.get('/list', async ctx => {
     await ctx.render('list',{
+        userInfo,
         list
     })
 });

@@ -8,10 +8,17 @@
 </head>
 <body>
 <div>
-  {% if state %}
-  <div>登录成功</div>
+  {% if state === 1 %}
+  <div>登录成功,state = {{state}}</div>
+  {% elif state === -1 %}
+  <div>密码错误,3s后退出 state = {{state}}</div>
+  <script>
+    setTimeout(() => {
+      history.go(-1)
+    },3000)
+  </script>
   {% else %}
-  <div>登录失败, 3s后退出</div>
+  <div>还未注册,3s后退出,state = {{state}}</div>
   <script>
     setTimeout(() => {
       history.go(-1)

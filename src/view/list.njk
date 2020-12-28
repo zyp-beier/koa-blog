@@ -1,17 +1,27 @@
 {% extends "layout/block.njk" %}
 {% block body%}
-    <div>
+<div class="main">
+    <div class="card list-wrap">
         {% for item in list %}
-        <div class="blog-list">
-            <div class="blog-title"><a class="" href="/item/{{item.id}}">{{ item.title }}</a></div>
-            <div class="blog-content">{{item.content}}</div>
-            <div class="blog-info">
-                <div class="blog-info-item">{{item.tag}}</div>
-                <div class="blog-info-item">{{item.createTime}}</div>
-                <div class="blog-info-item">{{item.pageViews}}次浏览</div>
+        <div class="archive-wrap">
+            <div class="archive-item">
+                <div class="active-left">
+                    <div class="archive-point"></div>
+                    <div class="archive-title">{{item.title}}</div>
+                </div>
+                <div class="archive-time">{{item.createTime}}</div>
             </div>
+<!--            <div class="archive-total">-->
+<!--                <div class="archive-avatar">{{userInfo.avatar}}</div>-->
+<!--                <div class="archive-month">三月</div>-->
+<!--            </div>-->
         </div>
         {% endfor %}
-        {% include "userInfo/userInfo.njk" %}
     </div>
+    <div>
+        {% include "userInfo/userInfo.njk" %}
+        {% include "allTags/allTags.njk" %}
+    </div>
+</div>
+
 {% endblock %}

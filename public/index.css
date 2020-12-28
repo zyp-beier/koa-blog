@@ -17,6 +17,16 @@
   }
   .header-left{
     display: flex;
+    align-items: center;
+  }
+  .header-img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .header-left img{
+    width: 100%;
+    border-radius: 50%;
   }
   .user-blog{
     color: black;
@@ -98,5 +108,11 @@
     font-size: 14px;
   }
   .blog-info-item{
-    padding-right: 10px;
+    padding-right: 30px;
+  }
+  .svg{
+    margin-right: 10px;
+  }
+  svg{
+    vertical-align: middle;
   }

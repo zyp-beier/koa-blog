@@ -1,0 +1,40 @@
+.list-wrap{
+    margin-top: 30px;
+}
+.archive-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:70px;
+    line-height: 70px;
+}
+.active-left{
+    display: flex;
+    align-items: center;
+}
+.archive-point{
+    height: 14px;
+    margin-right: 30px;
+    width: 2px;
+    border-top: 30px solid #dcdcdc;
+    border-bottom: 29px solid #dcdcdc;
+    position: relative;
+}
+.archive-point::before{
+    content: '';
+    width: 12px;
+    height: 12px;
+    border:2px solid #dcdcdc;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: -7px;
+}
+.archive-title{
+    font-size: 16px;
+    color: #565656;
+}
+.archive-time{
+    font-size: 12px;
+    color: #717171;
+}
