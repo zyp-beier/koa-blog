@@ -5,15 +5,15 @@ const njs = require('koa-nunjucks-2');
 const bodyParser = require('koa-bodyparser')
 const app = new Koa();
 const route = new Route();
-
 const path = require('path');
 const config = require('../cofig/cofig');
+const session = require('koa-session');
 
 const list = require('./stor/list');
 const userInfo = require('./stor/blog');
 const tagList = require('./stor/tag')
 
-
+app.use(session({},app))
 app.use(njs({
     path: path.join(__dirname, 'view'),
     ext: 'njk',
