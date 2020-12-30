@@ -23,6 +23,19 @@ app.use(njs({
 }));
 app.use(bodyParser())
 
+app.use((ctx,next) => {
+    let url = ctx.url
+    if(url.substr(0,6) === '/admin'){
+        if(ctx.cookies.get('isLogin')) {
+            return next()
+        }else{
+            console.log('未登录')
+            return ctx.redirect('/login.html')
+        }
+    }
+    return next()
+})
+
 route.get('/login.html', async ctx => {
     await  ctx.render('login/login')
 });
@@ -33,10 +46,11 @@ route.post('/login', async ctx => {
     let state = 0
     if(username === userName && password === psd) {
         state = 1
+        ctx.cookies.set('isLogin',true)
     }else if((username && username === userName) && password !== psd) {
         state = -1
     }
-    await ctx.render('requestResult/requestResult',{state})
+    await ctx.render('admin/index',{state});
 });
 
 route.get('/', async ctx => {
@@ -82,11 +96,12 @@ route.get('/admin/admin', async ctx => {
 
 route.get('/admin/posts/remove',async ctx => {
     const {id} = ctx.query;
+    console.log('id',id)
      let index = list.findIndex((item) => {
          return String(item.id) === String(id)
      });
    list.splice(index,1)
-    return ctx.redirect('/admin/posts/remove')
+    return ctx.redirect('/admin/posts')
 });
 
 route.post('/admin/posts/create', async ctx => {
@@ -94,10 +109,10 @@ route.post('/admin/posts/create', async ctx => {
     console.log(title,content)
     let id = list[list.length - 1].id;
     list.push({
-        id: id++,
+        id: ++id,
         title,
         content,
-    })
+    });
     return ctx.redirect('/admin/posts')
 })
 

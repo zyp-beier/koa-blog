@@ -2,10 +2,9 @@
 
 {% block body %}
 {% for post in list %}
-    <div>{{loop.index}}<a href="/admin/posts/{{post.id}}">{{post.title}}</a></div>
-<div>{{post.content}}</div>
+    <div>{{loop.index}}<a href="/item/?id={{post.id}}">{{post.title}}</a></div>
+    <div>{{post.content}}</div>
     <div><a href="/admin/posts/remove/?id={{post.id}}">删除</a></div>
-<div><a href="/item/?id={{post.id}}">查看</a></div>
 {% endfor %}
 
 <div>
