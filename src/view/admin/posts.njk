@@ -1,14 +1,22 @@
 {% extends "layout/block.njk" %}
 
-{% block body %}
-{% for post in list %}
-    <div>{{loop.index}}<a href="/item/?id={{post.id}}">{{post.title}}</a></div>
-    <div>{{post.content}}</div>
-    <div><a href="/admin/posts/remove/?id={{post.id}}">删除</a></div>
-{% endfor %}
+{% block header %}
+{% include 'components/admin-header.njk' %}
+{% endblock %}
 
-<div>
-    <div>
+{% block body %}
+<div class="posts-wrap">
+    {% for post in list %}
+    <div class="posts-item">
+        <div class="posts-header">
+            <div class="posts-title">{{loop.index}}. <a href="/item/?id={{post.id}}">{{post.title}}</a></div>
+            <div class="posts-remove"><a href="/admin/posts/remove/?id={{post.id}}">删除</a></div>
+        </div>
+        <div class="posts-content">{{post.content}}</div>
+    </div>
+    {% endfor %}
+
+    <div class="posts-add">
         <form action="/admin/posts/create" method="post">
             <label for="title">
                 标题

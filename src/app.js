@@ -11,9 +11,14 @@ const session = require('koa-session');
 
 const list = require('./stor/list');
 const userInfo = require('./stor/blog');
-const tagList = require('./stor/tag')
+const tagList = require('./stor/tag');
+const {LoginView,Login} = require("./controller/LoginController");
+const {AdminView, AdminPostsView, AdminAdmin,AdminPostsRemoveView,AdminPostsRemove} = require("./controller/AdminController");
+const {IndexView,ListView,ItemView} = require("./controller");
+const {checkAuth} = require("./middleware/chinkLogin");
 
-app.use(session({},app))
+app.keys = ['asdfghjkl'];
+app.use(session({},app));
 app.use(njs({
     path: path.join(__dirname, 'view'),
     ext: 'njk',
@@ -21,100 +26,34 @@ app.use(njs({
         trimBlock: true
     }
 }));
-app.use(bodyParser())
+app.use(bodyParser());
 
-app.use((ctx,next) => {
-    let url = ctx.url
-    if(url.substr(0,6) === '/admin'){
-        if(ctx.cookies.get('isLogin')) {
-            return next()
-        }else{
-            console.log('未登录')
-            return ctx.redirect('/login.html')
-        }
-    }
+app.use(async (ctx,next) => {
+    ctx.userInfo = userInfo;
+    ctx.tagList = tagList;
+    ctx.list = list;
     return next()
-})
-
-route.get('/login.html', async ctx => {
-    await  ctx.render('login/login')
 });
 
-route.post('/login', async ctx => {
-    const {userName,psd} = userInfo
-    const {username,password} = ctx.request.body;
-    let state = 0
-    if(username === userName && password === psd) {
-        state = 1
-        ctx.cookies.set('isLogin',true)
-    }else if((username && username === userName) && password !== psd) {
-        state = -1
-    }
-    await ctx.render('admin/index',{state});
-});
+route.get('/', IndexView);
 
-route.get('/', async ctx => {
-    await ctx.render('index',{
-        userInfo,
-        year:new Date().getFullYear(),
-        tagList
-    })
-});
+route.get('/list', ListView);
 
-route.get('/list', async ctx => {
-    await ctx.render('list',{
-        userInfo,
-        list
-    })
-});
+route.get('/item/:id', ItemView);
 
-route.get('/item', async ctx => {
-    const {id = ''} = ctx.query
-    const item = list.find(item => Number(id) === Number(item.id))
-    if(!item){
-        ctx.status = 404;
-        return
-    }
-    await ctx.render('item',{
-        id,
-        item
-    })
-});
+route.get('/login.html', Login);
 
-route.get('/admin',async ctx => {
-    await ctx.render('admin/index')
-})
+route.post('/login', LoginView);
 
-route.get('/admin/posts', async ctx => {
-    await ctx.render('admin/posts',{
-        list
-    })
-})
-route.get('/admin/admin', async ctx => {
-    await ctx.render('admin/admin')
-});
+route.get('/admin',checkAuth(), AdminView);
 
-route.get('/admin/posts/remove',async ctx => {
-    const {id} = ctx.query;
-    console.log('id',id)
-     let index = list.findIndex((item) => {
-         return String(item.id) === String(id)
-     });
-   list.splice(index,1)
-    return ctx.redirect('/admin/posts')
-});
+route.get('/admin/posts',checkAuth(), AdminPostsView);
 
-route.post('/admin/posts/create', async ctx => {
-    let {title,content} = ctx.request.body;
-    console.log(title,content)
-    let id = list[list.length - 1].id;
-    list.push({
-        id: ++id,
-        title,
-        content,
-    });
-    return ctx.redirect('/admin/posts')
-})
+route.get('/admin/admin', checkAuth(), AdminAdmin);
+
+route.get('/admin/posts/remove',AdminPostsRemoveView);
+
+route.post('/admin/posts/create', AdminPostsRemove);
 
 app.use(route.routes());
 app.use(route.allowedMethods());

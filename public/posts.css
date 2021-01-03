@@ -1,0 +1,37 @@
+.posts-wrap{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.posts-item{
+    margin-bottom:20px;
+    padding:10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px #ccc;
+}
+.posts-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.posts-title, .posts-title a{
+    font-size: 20px;
+    font-weight: bold;
+    color:black;
+    text-decoration: none;
+}
+.posts-remove a{
+    color:red;
+    font-size: 14px;
+    text-decoration: none;
+}
+.posts-content{
+    margin-top:10px;
+    font-size: 14px;
+    color: #7f7f7f;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}

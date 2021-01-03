@@ -64,7 +64,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-
+.content{
+  margin-top: 70px;
+}
   .main{
     display: flex;
     justify-content: space-between;

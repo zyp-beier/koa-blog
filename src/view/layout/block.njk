@@ -10,9 +10,13 @@
   <link rel="stylesheet" href="/allTags.css">
   <link rel="stylesheet" href="/list.css">
   <link rel="stylesheet" href="/tag.css">
+  <link rel="stylesheet" href="/admin.css">
+  <link rel="stylesheet" href="/posts.css">
   <script src="/tag.js"></script>
   {% block styles %}{% endblock %}
 </head>
+
+
 <body>
 {% block header%}
 <div class='header-wrap'>
@@ -42,11 +46,16 @@
   </div>
 </div>
 {% endblock %}
+
+
 <div>
   {% block body %}
   defaule body
   {% endblock %}
 </div>
+
+
+
 {% block footer %}
 <div class="footer-wrap">
   <div class="footer">

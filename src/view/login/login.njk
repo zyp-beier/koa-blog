@@ -33,4 +33,16 @@
  </div>
 </div>
 </body>
+<script>
+  window.onload = function () {
+    if(state === 0){
+      alert('未登录')
+    }else if(state === -1){
+      alert('密码错误')
+    }else{
+      console.log('登录')
+    }
+
+  }
+</script>
 </html>
