@@ -26,6 +26,7 @@ app.use(bodyParser());
 
 app.use(async (ctx,next) => {
     ctx.userInfo = userInfo;
+    ctx.state.username = ctx.session.username;
     ctx.tagList = tagList;
     ctx.list = list;
     return next()
