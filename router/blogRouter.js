@@ -1,7 +1,8 @@
 const Route = require('@koa/router');
 const {
     LoginView,
-    Login} = require("../src/controller/LoginController");
+    Login,
+    HandleLogOut} = require("../src/controller/LoginController");
 const {ItemView,
     ListView,
     IndexView} = require("../src/controller");
@@ -19,6 +20,8 @@ BlogRouter.get('/item/:id', ItemView);
 BlogRouter.get('/login.html', Login);
 
 BlogRouter.post('/login', LoginView);
+
+BlogRouter.get('/logOut', HandleLogOut);
 
 
 const initBlogRouter = (app) => {

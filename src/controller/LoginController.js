@@ -6,7 +6,7 @@ const LoginView = async ctx => {
     if(username === userName && password === psd) {
         ctx.session.username = username;
         ctx.session.isLogin = true;
-        await ctx.render('admin/index');
+        await ctx.redirect('/admin');
     }else if((username && username === userName) && password !== psd) {
         state = -1;
         await ctx.redirect('/login.html',{state})
@@ -19,7 +19,13 @@ const Login = async ctx => {
     await  ctx.render('login/login')
 };
 
+const HandleLogOut = async ctx => {
+     ctx.session = null;
+    ctx.redirect('/')
+};
+
 module.exports = {
     LoginView,
-    Login
+    Login,
+    HandleLogOut
 };
